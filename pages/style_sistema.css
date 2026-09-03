@@ -1,0 +1,657 @@
+/* =========================================================
+   RFID TOOLS — ESTILO GERAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Alata', sans-serif;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #101817 0%,
+            #05070a 55%,
+            #000000 100%
+        );
+    color: #e8f5f3;
+    padding: 30px 20px;
+}
+
+/* =========================================================
+   TELA DE CADASTRO
+   ========================================================= */
+
+.tela {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo / título */
+
+.titulo {
+    margin-top: 20px;
+    margin-bottom: 5px;
+
+    color: #1de3d8;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+
+    text-shadow:
+        0 0 8px rgba(29, 227, 216, 0.4),
+        0 0 20px rgba(29, 227, 216, 0.2);
+}
+
+.subtitulo {
+    margin-bottom: 28px;
+
+    color: #7f8b89;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* =========================================================
+   CARD PRINCIPAL
+   ========================================================= */
+
+.container {
+    width: 100%;
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.container h2 {
+    margin-bottom: 6px;
+
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.descricao {
+    margin-bottom: 25px;
+
+    color: #8c9997;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   MENSAGENS PHP
+   ========================================================= */
+
+.mensagem {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.mensagem.sucesso {
+    color: #7fe9e1;
+    background: rgba(62, 224, 138, 0.08);
+    border: 1px solid rgba(62, 224, 138, 0.25);
+}
+
+.mensagem.erro {
+    color: #f4a3a3;
+    background: rgba(226, 75, 74, 0.08);
+    border: 1px solid rgba(226, 75, 74, 0.25);
+}
+
+/* =========================================================
+   FORMULÁRIO
+   ========================================================= */
+
+#formulario_cadastro_funcionario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#formulario_cadastro_funcionario label {
+    margin-top: 8px;
+
+    color: #b8c4c2;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#formulario_cadastro_funcionario input {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 14px;
+
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.32);
+
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+#formulario_cadastro_funcionario input::placeholder {
+    color: #596563;
+}
+
+#formulario_cadastro_funcionario input:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+#formulario_cadastro_funcionario input:focus {
+    background: rgba(0, 0, 0, 0.42);
+
+    border-color: #1de3d8;
+
+    box-shadow:
+        0 0 0 3px rgba(29, 227, 216, 0.10),
+        0 0 18px rgba(29, 227, 216, 0.06);
+}
+
+/* =========================================================
+   CAMPO DE SENHA
+   ========================================================= */
+
+.campo-senha {
+    position: relative;
+    width: 100%;
+}
+
+.campo-senha input {
+    padding-right: 50px !important;
+}
+
+.botao-olho {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+
+    width: 36px;
+    height: 36px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 7px;
+
+    background: transparent;
+    color: #7f8b89;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.botao-olho:hover {
+    background: rgba(29, 227, 216, 0.08);
+    color: #1de3d8;
+}
+
+/* =========================================================
+   BOTÃO PRINCIPAL
+   ========================================================= */
+
+.botao-primario {
+    width: 100%;
+    height: 46px;
+
+    margin-top: 18px;
+
+    border: 1px solid rgba(29, 227, 216, 0.55);
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(29, 227, 216, 0.20),
+            rgba(29, 227, 216, 0.08)
+        );
+
+    color: #7fe9e1;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+.botao-primario:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(29, 227, 216, 0.30),
+            rgba(29, 227, 216, 0.13)
+        );
+
+    border-color: rgba(29, 227, 216, 0.8);
+
+    box-shadow:
+        0 0 20px rgba(29, 227, 216, 0.12);
+}
+
+.botao-primario:active {
+    transform: translateY(1px);
+}
+
+/* =========================================================
+   BOTÃO SECUNDÁRIO
+   ========================================================= */
+
+.botao-secundario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 44px;
+
+    margin-top: 4px;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #9aa5a3;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.botao-secundario:hover {
+    background: rgba(255, 255, 255, 0.05);
+
+    border-color: rgba(255, 255, 255, 0.17);
+
+    color: #e8f5f3;
+}
+
+/* =========================================================
+   MELHORIAS DE ACESSIBILIDADE
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid #1de3d8;
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 14px;
+    }
+
+    .tela {
+        max-width: 100%;
+    }
+
+    .titulo {
+        font-size: 23px;
+        letter-spacing: 4px;
+    }
+
+    .subtitulo {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        margin-bottom: 22px;
+    }
+
+    .container {
+        padding: 22px 18px;
+        border-radius: 14px;
+    }
+
+    .container h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 15px 10px;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    .titulo {
+        font-size: 21px;
+    }
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.tela-login {
+    min-height: calc(100vh - 60px);
+    justify-content: center;
+}
+
+/* Pequeno detalhe visual acima da logo */
+
+.logo-rfid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    margin-bottom: 12px;
+}
+
+.logo-ponto {
+    display: block;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #1de3d8;
+
+    box-shadow:
+        0 0 8px rgba(29, 227, 216, 0.8),
+        0 0 18px rgba(29, 227, 216, 0.4);
+}
+
+.logo-ponto:nth-child(2) {
+    width: 10px;
+    height: 10px;
+}
+
+.logo-ponto:nth-child(3) {
+    opacity: 0.6;
+}
+
+
+/* Card de login */
+
+.login-container {
+    max-width: 440px;
+
+    padding: 32px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Brilho discreto no topo do card */
+
+.login-container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+    right: 15%;
+
+    height: 1px;
+
+    background: #1de3d8;
+
+    box-shadow:
+        0 0 15px rgba(29, 227, 216, 0.8),
+        0 0 30px rgba(29, 227, 216, 0.4);
+
+    opacity: 0.7;
+}
+
+
+/* Cabeçalho */
+
+.login-cabecalho {
+    margin-bottom: 25px;
+}
+
+.login-cabecalho h2 {
+    margin-bottom: 7px;
+}
+
+
+/* Formulário */
+
+#formulario_login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#formulario_login label {
+    margin-top: 8px;
+
+    color: #b8c4c2;
+
+    font-size: 12px;
+}
+
+#formulario_login input {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 14px;
+
+    background: rgba(0, 0, 0, 0.32);
+
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+#formulario_login input::placeholder {
+    color: #596563;
+}
+
+#formulario_login input:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+#formulario_login input:focus {
+    background: rgba(0, 0, 0, 0.42);
+
+    border-color: #1de3d8;
+
+    box-shadow:
+        0 0 0 3px rgba(29, 227, 216, 0.10),
+        0 0 18px rgba(29, 227, 216, 0.06);
+}
+
+
+/* Botão entrar */
+
+#formulario_login .botao-primario {
+    margin-top: 20px;
+}
+
+
+/* Separador */
+
+.separador-login {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 25px 0 20px;
+
+    color: #53605e;
+
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.separador-login::before,
+.separador-login::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.separador-login span {
+    flex-shrink: 0;
+}
+
+
+/* Área de cadastro */
+
+.cadastro-login {
+    text-align: center;
+}
+
+.cadastro-login p {
+    margin-bottom: 12px;
+
+    color: #7f8b89;
+
+    font-size: 12px;
+}
+
+
+/* Botão cadastro */
+
+.cadastro-login .botao-secundario {
+    margin-top: 0;
+
+    border-color: rgba(29, 227, 216, 0.18);
+
+    background: rgba(29, 227, 216, 0.025);
+
+    color: #7fe9e1;
+}
+
+.cadastro-login .botao-secundario:hover {
+    border-color: rgba(29, 227, 216, 0.4);
+
+    background: rgba(29, 227, 216, 0.07);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(29, 227, 216, 0.05);
+}
+
+
+/* Rodapé */
+
+.rodape-login {
+    margin-top: 22px;
+
+    color: #46514f;
+
+    font-size: 10px;
+
+    letter-spacing: 0.8px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   LOGIN — RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .tela-login {
+        min-height: calc(100vh - 40px);
+    }
+
+    .login-container {
+        max-width: 100%;
+        padding: 24px 20px;
+    }
+
+    .rodape-login {
+        margin-top: 18px;
+    }
+}
