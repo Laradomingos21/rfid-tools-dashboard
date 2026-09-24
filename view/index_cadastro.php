@@ -4,27 +4,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
-// =========================================================
-// VERIFICAR LOGIN
-// =========================================================
-
 if (empty($_SESSION['logado'])) {
     header('Location: login.php');
     exit;
 }
 
-
-// =========================================================
-// CONEXÃO COM O BANCO
-// =========================================================
-
 require_once '../config/conexao.php';
-
-
-// =========================================================
-// BUSCAR FUNCIONÁRIOS
-// =========================================================
 
 try {
 
@@ -57,10 +42,6 @@ try {
 
 }
 
-
-// =========================================================
-// DADOS DO USUÁRIO LOGADO
-// =========================================================
 
 $nomeUsuario = $_SESSION['funcionario_nome'] ?? 'Usuário';
 $setorUsuario = $_SESSION['funcionario_setor'] ?? '';
@@ -105,10 +86,6 @@ $setorUsuario = $_SESSION['funcionario_setor'] ?? '';
 
 <body>
 
-    <!-- =====================================================
-         BARRA SUPERIOR
-         ===================================================== -->
-
     <header class="topbar">
 
         <div class="marca">
@@ -152,12 +129,6 @@ $setorUsuario = $_SESSION['funcionario_setor'] ?? '';
 
     </header>
 
-
-
-    <!-- =====================================================
-         CONTEÚDO
-         ===================================================== -->
-
     <main class="painel">
 
         <section class="cabecalho-pagina">
@@ -187,12 +158,6 @@ $setorUsuario = $_SESSION['funcionario_setor'] ?? '';
             </a>
 
         </section>
-
-
-
-        <!-- =================================================
-             ESTATÍSTICAS
-             ================================================= -->
 
         <?php
 
@@ -268,12 +233,7 @@ $setorUsuario = $_SESSION['funcionario_setor'] ?? '';
             </div>
 
         </section>
-
-
-
-        <!-- =================================================
-             TABELA
-             ================================================= -->
+]
 
         <section class="painel-secao tabela-funcionarios">
 

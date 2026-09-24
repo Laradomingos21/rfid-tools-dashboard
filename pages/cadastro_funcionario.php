@@ -1,12 +1,62 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+session_start();
+require_once __DIR__ . '/../config/conexao.php'; // ajuste o caminho
+
+function voltar($msg, $status)
+{
+    $_SESSION['msg_func'] = $msg;
+    $_SESSION['status_func'] = $status;
+    header('Location: ../view/cadastro_funcionario.php'); // ajuste o nome da view
+    exit;
 }
 
-$msg = $_SESSION['msg_func'] ?? '';
-$status = $_SESSION['status_func'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    voltar('Requisição inválida.', 'erro');
+}
 
-unset($_SESSION['msg_func'], $_SESSION['status_func']);
+$nome         = trim(isset($_POST['nome']) ? $_POST['nome'] : '');
+$email        = trim(isset($_POST['email']) ? $_POST['email'] : '');
+$matricula    = trim(isset($_POST['matricula']) ? $_POST['matricula'] : '');
+$departamento = trim(isset($_POST['departamento']) ? $_POST['departamento'] : '');
+$tag_rfid     = trim(isset($_POST['tag_rfid']) ? $_POST['tag_rfid'] : '');
+$senha        = isset($_POST['senha']) ? $_POST['senha'] : '';
+
+if ($nome === '' || $email === '' || $matricula === '' || $departamento === '' || $tag_rfid === '' || $senha === '') {
+    voltar('Preencha todos os campos.', 'erro');
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    voltar('Email inválido.', 'erro');
+}
+
+if (strlen($senha) < 6) {
+    voltar('A senha deve ter no mínimo 6 caracteres.', 'erro');
+}
+
+try {
+    $hash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO funcionarios (nome, email, matricula, departamento, tag_rfid, senha)
+            VALUES (:nome, :email, :matricula, :departamento, :tag_rfid, :senha)";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':nome'         => $nome,
+        ':email'        => $email,
+        ':matricula'    => $matricula,
+        ':departamento' => $departamento,
+        ':tag_rfid'     => $tag_rfid,
+        ':senha'        => $hash,
+    ));
+
+    voltar('Funcionário cadastrado com sucesso!', 'sucesso');
+
+} catch (PDOException $e) {
+    if ($e->getCode() == '23000') {
+        voltar('Email, matrícula ou tag RFID já cadastrados.', 'erro');
+    }
+    voltar('Erro ao cadastrar. Tente novamente.', 'erro');
+}
 ?>
 
 <!DOCTYPE html>
